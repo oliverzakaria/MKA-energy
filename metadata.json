@@ -1,0 +1,7 @@
+{
+  "name": "MKA Energy Solution - Spesialis PLTS & Energi Terbarukan",
+  "description": "Website resmi PT Mitra Karya Ausindo (MKA Energy Solution) - Solusi PLTS On-Grid, Hybrid & Off-Grid, Pompa Air Tenaga Surya, PJU & Sistem Monitoring Realtime di Indonesia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

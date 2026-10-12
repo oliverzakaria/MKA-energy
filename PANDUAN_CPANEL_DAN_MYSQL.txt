@@ -1,0 +1,227 @@
+================================================================================
+PANDUAN LENGKAP DEPLOYMENT CPANEL & MYSQL
+MKA ENERGY SOLUTION - PT MITRA KARYA AUSINDO
+Website: www.mkaenergy.co.id
+================================================================================
+
+Dokumen ini berisi panduan teknis langkah demi langkah untuk melakukan deploy
+dan instalasi website MKA Energy Solution beserta sistem database MySQL dan
+portal admin ke layanan Web Hosting CPanel (Apache + PHP + MySQL).
+
+--------------------------------------------------------------------------------
+1. SPESIFIKASI SISTEM & KEBUTUHAN HOSTING CPANEL
+--------------------------------------------------------------------------------
+- Web Server      : Apache 2.4+ (dengan modul mod_rewrite, mod_deflate, mod_headers)
+- PHP Engine      : PHP versi 7.4, 8.0, 8.1, 8.2, atau 8.3 (Rekomendasi: PHP 8.1/8.2)
+- Ekstensi PHP    : pdo_mysql, json, mbstring, openssl
+- Database Engine : MySQL versi 5.7+ / 8.0+ atau MariaDB versi 10.3+
+- File Manager    : CPanel File Manager dengan fitur Extract Zip dan Show Hidden Files
+
+--------------------------------------------------------------------------------
+2. DAFTAR FILE DALAM PAKET DEPLOYMENT (mkaenergy_cpanel_upload.zip)
+--------------------------------------------------------------------------------
+File zip deployment siap di-extract langsung ke direktori public_html:
+
+├── index.html                  -> Halaman utama website dan antarmuka SPA
+├── index.php                   -> Handler server-side PHP (alternatif index Apache)
+├── api.php                     -> REST API PHP backend (surveys, tickets, products, payments)
+├── config.php                  -> Konfigurasi koneksi database MySQL & Session Timeout (PDO)
+├── database.sql                -> Skema lengkap tabel database, akun admin terenkripsi, & seed data
+├── .htaccess                   -> Konfigurasi Apache (Clean URL/Permalink, HTTPS, Gzip)
+├── PANDUAN_CPANEL_DAN_MYSQL.txt-> File panduan instalasi ini
+├── pengelola-mka-7k9q/         -> FOLDER KHUSUS PORTAL ADMIN PENGELOLA
+│   ├── login.php               -> Halaman login aman (Bcrypt + proteksi brute force)
+│   ├── index.php               -> Dashboard admin mandiri server-side (statistik & leads)
+│   ├── auth_check.php          -> Middleware proteksi sesi & session timeout otomatis
+│   └── logout.php              -> Handler keluar sistem & pembersihan sesi
+└── assets/                     -> File CSS, JavaScript, dan visual gambar hasil build
+    ├── *.js                    -> Bundel JavaScript aplikasi & admin portal
+    ├── *.css                   -> Bundel CSS styling responsif
+    └── *.jpg / *.png / *.svg   -> Aset gambar resolusi tinggi PLTS
+
+--------------------------------------------------------------------------------
+3. LANGKAH-LANGKAH DEPLOY KE CPANEL
+--------------------------------------------------------------------------------
+
+[LANGKAH 1] MEMBUAT DATABASE & PENGGUNA DI CPANEL
+1. Buka browser dan login ke dashboard CPanel hosting Anda
+   (misal: https://mkaenergy.co.id:2083 atau https://namadomain.com/cpanel).
+2. Temukan menu "DATABASES", kemudian klik "MySQL® Databases".
+3. Pada bagian "Create New Database":
+   - Masukkan nama database, contoh: `mkaenergy_db`
+   - Klik tombol "Create Database".
+   - Catat nama lengkap database yang terbentuk (biasanya formatnya: usernamecpanel_mkaenergy_db).
+4. Gulir ke bawah ke bagian "MySQL Users - Add New User":
+   - Username : `mkaenergy_user` (atau sesuai keinginan)
+   - Password : Buat password yang kuat (gunakan tombol Password Generator).
+   - Catat username dan password tersebut.
+   - Klik tombol "Create User".
+5. Gulir ke bagian "Add User To Database":
+   - Pilih User dan Database yang baru saja dibuat.
+   - Klik "Add".
+   - Pada halaman berikutnya, beri tanda centang pada "ALL PRIVILEGES".
+   - Klik "Make Changes".
+
+---
+
+[LANGKAH 2] IMPORT SKEMA & DATA AWAL KE MYSQL VIA PHPMYADMIN
+1. Kembali ke halaman utama CPanel.
+2. Di kategori "DATABASES", klik "phpMyAdmin".
+3. Di kolom sebelah kiri phpMyAdmin, klik nama database yang sudah Anda buat pada Langkah 1.
+4. Klik tab "Import" pada bilah menu bagian atas.
+5. Pada bagian "File to import", klik tombol "Choose File" (Pilih File) dan pilih file `database.sql`.
+6. Pastikan format terpilih adalah "SQL", kemudian gulir ke bagian paling bawah dan klik tombol "Import" (atau "Go").
+7. Tunggu beberapa detik hingga muncul pesan sukses berwarna hijau:
+   "Import has been successfully finished, XX queries executed."
+8. Database kini telah memiliki tabel lengkap:
+   - `settings`        : Profil perusahaan, hotline, alamat Meikarta & Depok
+   - `users`           : Akun login administrator
+   - `products`        : Data katalog PLTS Hybrid, Off-Grid, On-Grid, Inverter, PATS, PJU
+   - `projects`        : Portofolio instalasi proyek industri & residensial
+   - `survey_requests` : Data formulir permohonan survey lokasi (min. Rp 30 Juta)
+   - `service_tickets` : Tiket purna jual 4 tahap (Laporan, Diagnosa, Perbaikan, Rating)
+   - `payments`        : Riwayat transaksi & invoice pembayaran online
+
+---
+
+[LANGKAH 3] MENGATUR KONEKSI DATABASE DI FILE config.php
+1. Di CPanel, buka menu "File Manager".
+2. Buka file `config.php` (bisa klik kanan -> pilih "Edit").
+3. Sesuaikan baris konfigurasi berikut sesuai data Langkah 1:
+
+   define('DB_HOST', 'localhost');
+   define('DB_NAME', 'usernamecpanel_mkaenergy_db'); // Ganti dengan nama database Anda
+   define('DB_USER', 'usernamecpanel_mkaenergy_user'); // Ganti dengan username MySQL Anda
+   define('DB_PASS', 'PasswordDatabaseAnda123!');     // Ganti dengan password MySQL Anda
+
+4. Klik tombol "Save Changes" di pojok kanan atas editor.
+
+---
+
+[LANGKAH 4] UPLOAD & EXTRACT FILE WEBSITE KE FOLDER public_html
+1. Masuk ke folder root web Anda di CPanel File Manager, yaitu `public_html`
+   (atau folder addon domain jika bukan domain utama).
+2. Klik tombol "Upload" pada toolbar bagian atas File Manager.
+3. Seret (drag & drop) atau pilih file `mkaenergy_cpanel_upload.zip`.
+4. Tunggu hingga progress upload selesai 100% dan indikator berwarna hijau.
+5. Kembali ke jendela File Manager, segarkan (Reload) tampilan.
+6. Klik kanan pada file `mkaenergy_cpanel_upload.zip`, lalu pilih "Extract".
+7. Masukkan direktori tujuan: `/public_html` lalu klik "Extract File(s)".
+8. Semua file website, aset css, js, php, dan `.htaccess` kini telah berada di `public_html`.
+9. (Opsional) File zip `mkaenergy_cpanel_upload.zip` dapat dihapus untuk menghemat ruang disk.
+
+* PENTING TERKAIT FILE .HTACCESS:
+Secara default, file yang diawali tanda titik (seperti `.htaccess`) disembunyikan oleh CPanel.
+Untuk memastikannya terlihat:
+- Klik tombol "Settings" di pojok kanan atas CPanel File Manager.
+- Beri centang pada "Show Hidden Files (dotfiles)".
+- Klik "Save".
+- Pastikan file `.htaccess` berada di dalam `public_html`.
+
+---
+
+[LANGKAH 5] VERIFIKASI PERMALINK & FITUR .HTACCESS
+File `.htaccess` yang disertakan telah dioptimalkan secara khusus untuk:
+1. HTTPS Redirect Otomatis:
+   Setiap akses HTTP otomatis diarahkan ke https:// secara aman (301 Permanent).
+2. Clean Permalink / SPA Routing:
+   Memastikan navigasi internal, hash router, dan refresh halaman browser tidak error 404.
+3. Routing REST API:
+   Request URL seperti `/api/surveys` atau `/api/tickets` otomatis diarahkan ke `api.php`.
+4. Kompresi GZIP (mod_deflate):
+   Mengompres teks, file HTML, CSS, JavaScript, dan JSON sehingga loading website jauh lebih cepat.
+5. Security Headers:
+   Melindungi website dari Clickjacking (X-Frame-Options), XSS Attacks, dan MIME sniffing.
+6. Browser Caching (mod_expires):
+   Menyimpan aset gambar dan script di cache browser pengunjung agar akses berikutnya instan.
+
+---
+
+[LANGKAH 6] CARA AKSES DAN MENGGUNAKAN PORTAL ADMIN PENGELOLA
+Portal admin pengelola telah diamankan dalam satu folder khusus dengan otentikasi database
+MySQL terenkripsi dan sistem proteksi batas waktu sesi (Session Timeout).
+
+1. URL Akses Portal Pengelola Resmi:
+   - Link Utama: https://mkaenergy.co.id/pengelola-mka-7k9q/login.php
+   - Atau       : https://www.mkaenergy.co.id/pengelola-mka-7k9q/
+   - Atau melalui website: Klik tombol "Admin Portal" pada navigasi bar atas/footer.
+
+2. Kredensial Login Default (Tersimpan & Dienkripsi di Database MySQL `users`):
+   - Username       : admin_mka
+   - Password       : AdminMKA2026!#
+   - Metode Enkripsi: Bcrypt ($2y$10$...) sesuai standar keamanan industri
+   - Role Akses     : Superadmin (Lead Solar Engineer)
+
+3. Fitur Keamanan Session Timeout (Otomatis Logout Tanpa Aktivitas):
+   - Waktu Timeout  : 15 Menit (900 detik) - dapat diatur di `config.php` (`ADMIN_SESSION_TIMEOUT`)
+   - Cara Kerja     : Jika pengguna tidak melakukan aktivitas (klik mouse, ketik keyboard, scroll),
+                      sistem akan menghitung mundur dan secara otomatis mengakhiri sesi login (logout).
+   - Pengguna wajib login ulang dengan username dan password terenkripsi untuk kembali masuk.
+
+4. Menu Manajemen yang Tersedia di Portal:
+   - Dashboard Overview   : Rekap total leads, pipeline investasi (Rp), tiket aktif, countdown sesi.
+   - Produk & Sistem      : Tambah, edit spesifikasi, dan hapus produk PLTS & Inverter.
+   - Portofolio Proyek    : Tambah, edit data kapasitas kWp, penghematan kWh & CO2.
+   - Permintaan Survey    : Kelola jadwal survey lapangan (dengan validasi min. Rp 30 Jt).
+   - Tiket Servis 4 Tahap : Kelola alur purna jual (1. Laporan Masuk -> 2. Diagnosa Lapangan
+                            -> 3. Perbaikan Standar -> 4. Verifikasi & Rating Kepuasan).
+   - Komponen Retail      : Kelola tautan affiliate/ritel ke mitra resmi (EnergiClick, dll).
+   - Profil & Kontak      : Perbarui hotline WA, email, alamat Meikarta Cikarang & Depok.
+
+---
+
+[LANGKAH 7] PENGUJIAN REST API PHP & DATABASE MYSQL
+Untuk memastikan integrasi PHP dan MySQL berjalan normal di CPanel:
+1. Buka URL: https://www.mkaenergy.co.id/api.php
+   Respon yang benar (JSON):
+   {"status":"success","app":"MKA Energy Solution API","version":"1.0.0","company":"PT Mitra Karya Ausindo"}
+2. Buka URL: https://www.mkaenergy.co.id/api.php?route=products
+   Akan menampilkan data katalog produk yang diambil langsung dari database MySQL.
+3. Uji Pengiriman Form:
+   - Buka form Permintaan Survey di website, isi data dengan nilai investasi >= Rp 30 Juta, lalu kirim.
+   - Periksa database phpMyAdmin tabel `survey_requests`, data baru akan otomatis tersimpan.
+
+---
+
+[LANGKAH 8] CARA MENGGANTI LOGO WEBSITE & UKURAN STANDAR REKOMENDASI
+Website telah dikonfigurasi untuk membaca file logo resmi secara otomatis dari root hosting:
+1. Lokasi Berkas Logo di CPanel (File Manager):
+   - File utama logo  : `/public_html/logo.png`
+   - File alternatif  : `/public_html/logo.svg` atau `/public_html/logo.jpg`
+   - Folder source    : `src/assets/images/logo.png` & `public/logo.png`
+
+2. Ukuran Standar Rekomendasi Logo:
+   - Tipe Persegi / Emblem (Square):
+     * Dimensi Ideal: 512 x 512 pixel (atau minimal 256 x 256 pixel).
+     * Format: PNG dengan background transparan (alpha channel).
+   - Tipe Horisontal (Logo + Nama Brand):
+     * Dimensi Ideal: Lebar 200 - 300 pixel, Tinggi 50 - 64 pixel (rasio ~ 4:1 atau 5:1).
+     * Format: PNG transparan atau SVG vektor (skalabilitas tajam di semua layar).
+   - Tampilan di Layar Website:
+     * Header Navbar : Tinggi otomatis disesuaikan secara proporsional ke 44px (h-11) s.d. 48px (h-12).
+     * Footer        : Tinggi otomatis disesuaikan ke 40px (h-10).
+     * Portal Admin  : Tinggi otomatis disesuaikan ke 36px (h-9).
+     * Tab Favicon   : Otomatis membaca `./logo.svg` dan `./logo.png`.
+
+3. Cara Cepat Mengganti Logo Tanpa Rebuild:
+   - Buka CPanel File Manager -> Masuk ke direktori `/public_html/`.
+   - Siapkan file logo baru Anda di komputer, beri nama: `logo.png`
+   - Klik tombol "Upload" pada File Manager dan centang "Overwrite existing files" (Timpa berkas lama).
+   - Upload file `logo.png` baru Anda.
+   - Buka website https://www.mkaenergy.co.id/ dan tekan Ctrl + F5 (Hard Refresh).
+   - Logo baru akan langsung tampil otomatis dengan ukuran standar yang rapi dan proporsional!
+
+--------------------------------------------------------------------------------
+4. INFORMASI KONTAK & SUPPORT
+--------------------------------------------------------------------------------
+PT Mitra Karya Ausindo (MKA Energy Solution)
+- Kantor Pusat  : District 1 Meikarta, OAKVIEW Tower, L7-35, Jl. Orange County Boulevard,
+                  Cibatu, Cikarang Selatan, Kab. Bekasi, Jawa Barat.
+- Kantor Cabang : Jl. Arif Rahman Hakim No. 17, Rt.02/Rw.006, Beji, Kota Depok, Jawa Barat.
+- Domain        : https://www.mkaenergy.co.id
+- Hotline / WA  : +62 812-8888-0199
+- Email         : info@mkaenergy.co.id
+
+================================================================================
+Dibuat secara otomatis untuk deployment CPanel MKA Energy Solution.
+================================================================================

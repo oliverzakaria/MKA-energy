@@ -1,0 +1,365 @@
+{
+  "company_info": {
+    "name": "PT Mitra Karya Ausindo",
+    "brandName": "MKA Energy Solution",
+    "establishedYear": 2019,
+    "logoUrl": "/uploads/logo.png",
+    "domain": "www.mkaenergy.co.id",
+    "tagline": "End-to-End Solar Energy Solutions for Indonesia",
+    "phone": "+62 812-8888-0199",
+    "email": "info@mkaenergy.co.id",
+    "whatsappUrl": "https://wa.me/6281288880199?text=Halo%20MKA%20Energy%20Solution,%20saya%20ingin%20konsultasi%20sistem%20PLTS",
+    "minSurveyInvestment": 30000000,
+    "headOffice": {
+      "title": "Kantor Pusat",
+      "address": "District 1 Meikarta, OAKVIEW Tower, L7-35, Jl. Orange County Boulevard, Cibatu, Cikarang Selatan, Kab. Bekasi, Jawa Barat",
+      "city": "Cikarang Selatan, Kab. Bekasi",
+      "phone": "+62 21 8991 3820"
+    },
+    "branchOffice": {
+      "title": "Kantor Cabang",
+      "address": "Jl. Arif Rahman Hakim No. 17, Rt.02/Rw.006, Beji, Kota Depok, Jawa Barat",
+      "city": "Kota Depok, Jawa Barat",
+      "phone": "+62 21 7720 4519"
+    },
+    "stats": [
+      {
+        "label": "Tahun Pengalaman",
+        "value": "7+ Tahun",
+        "subtext": "Konsisten sejak 2019"
+      },
+      {
+        "label": "Total Kapasitas Terpasang",
+        "value": "18.4+ MWp",
+        "subtext": "Seluruh Indonesia"
+      },
+      {
+        "label": "Proyek Selesai",
+        "value": "250+ Proyek",
+        "subtext": "Residensial hingga Industri"
+      },
+      {
+        "label": "Garansi Modul Surya",
+        "value": "25 Tahun",
+        "subtext": "Performa Linear Tier-1"
+      }
+    ]
+  },
+  "admin_users": [
+    {
+      "id": "adm-001",
+      "username": "admin_mka",
+      "passwordHash": "9a31dd58c4fcbcfad4f55a1ee3e5eeff7999849fafeea86ff1b4742e8eaee89d",
+      "salt": "mka_salt_sec_2026_x7k9q",
+      "fullName": "Ahmad Fauzi, S.T.",
+      "email": "admin@mkaenergy.co.id",
+      "role": "superadmin",
+      "status": "active",
+      "lastLogin": "2026-10-12 04:06:25",
+      "createdAt": "2026-01-01 08:00:00"
+    },
+    {
+      "id": "adm-002",
+      "username": "engineer_mka",
+      "passwordHash": "9a31dd58c4fcbcfad4f55a1ee3e5eeff7999849fafeea86ff1b4742e8eaee89d",
+      "salt": "mka_salt_sec_2026_x7k9q",
+      "fullName": "Bambang Triyono, S.T. (Senior Solar Engineer)",
+      "email": "engineer@mkaenergy.co.id",
+      "role": "lead_engineer",
+      "status": "active",
+      "lastLogin": "2026-10-09 11:20:15",
+      "createdAt": "2026-02-15 09:30:00"
+    }
+  ],
+  "products": [
+    {
+      "id": "prod-hybrid-5kw",
+      "name": "MKA Smart Hybrid Solar Storage System 5kW - 15kW",
+      "category": "hybrid",
+      "capacity": "5 kWp - 15 kWp (Modular)",
+      "warranty": "Garansi Sistem 5 Tahun, Baterai 10 Tahun, Modul 25 Tahun",
+      "description": "Solusi PLTS Hybrid cerdas dengan sinkronisasi PLN otomatis, baterai LiFePO4 terintegrasi, dan peralihan tanpa jeda (UPS switch <10ms) saat pemadaman PLN.",
+      "features": [
+        "Pure Sine Wave Smart Hybrid Inverter bersertifikat SNI",
+        "High-Cycle LiFePO4 Battery Pack (6,000+ siklus pemakaian)",
+        "Dual MPPT Tracker efisiensi hingga 98.4%",
+        "Pemantauan telemetri real-time via aplikasi mobile & web",
+        "Mode kerja pintar: Self-Consumption, Peak-Shaving, & Backup Priority"
+      ],
+      "specs": [
+        {
+          "label": "Tegangan AC",
+          "value": "220V / 380V Single / 3 Phase"
+        },
+        {
+          "label": "Kapasitas Baterai",
+          "value": "5.12 kWh s/d 30.72 kWh (Expandable)"
+        },
+        {
+          "label": "Max PV Input Voc",
+          "value": "550V DC"
+        },
+        {
+          "label": "Proteksi",
+          "value": "IP65 Outdoor Ready, Surge Protection Type II"
+        }
+      ],
+      "imageUrl": "/uploads/product_hybrid_energy_storage_1791532019483.jpg",
+      "datasheetAvailable": true
+    },
+    {
+      "id": "prod-ongrid-ci",
+      "name": "MKA Industrial Rooftop On-Grid Solution (50kWp - 2MWp)",
+      "category": "on-grid",
+      "capacity": "50 kWp - 2 MWp",
+      "warranty": "Garansi Inverter 5-10 Tahun, Modul PV 25 Tahun Tier-1",
+      "description": "Sistem PLTS Atap On-Grid skala pabrik, pergudangan, dan gedung komersial untuk menekan biaya tagihan listrik PLN secara signifikan hingga 40-70%.",
+      "features": [
+        "Multi-MPPT High-Power String Inverters dengan efisiensi 98.8%",
+        "Modul Surya Monocrystalline N-Type TopCon 580Wp+ Tier-1",
+        "Zero Export Device terstandarisasi Permen ESDM",
+        "Mounting Aluminium Anodized tahan korosi garam & industri",
+        "Data Logger Weather Station terintegrasi (Radiasi, Suhu Modul, Wind speed)"
+      ],
+      "specs": [
+        {
+          "label": "Tegangan Operasi",
+          "value": "380V / 400V 3 Phase AC"
+        },
+        {
+          "label": "Monitoring Port",
+          "value": "RS485 / Modbus / 4G LTE IoT Gateway"
+        },
+        {
+          "label": "Proteksi DC & AC",
+          "value": "Built-in AFCI (Arc Fault Circuit Interrupter)"
+        },
+        {
+          "label": "Sertifikasi",
+          "value": "IEC 61215, IEC 61730, CE, SNI"
+        }
+      ],
+      "imageUrl": "/uploads/hero_solar_rooftop_1791532004071.jpg",
+      "datasheetAvailable": true
+    },
+    {
+      "id": "prod-pats-pump",
+      "name": "MKA Solar Water Pump (PATS) Sistem Irigasi & Air Bersih",
+      "category": "pats",
+      "capacity": "1 HP s/d 50 HP (Deep Well Submersible / Surface)",
+      "warranty": "Garansi Sistem 3 Tahun, Pompa 2 Tahun, Modul 25 Tahun",
+      "description": "Sistem Pompa Air Tenaga Surya mandiri tanpa bahan bakar solar/listrik PLN, ideal untuk perkebunan, pertanian, tambak, dan air bersih desa terpencil.",
+      "features": [
+        "Inverter Pompa VFD Solar cerdas dengan MPPT dinamis",
+        "Pompa Submersible Stainless Steel AISI 304 tahan pasir & karat",
+        "Otomatis menyala saat matahari terbit & mati saat senja",
+        "Proteksi Dry-Run (Sensor sumur kering otomatis melindungi motor)",
+        "Tanpa baterai kimia sehingga biaya perawatan mendekati nol"
+      ],
+      "specs": [
+        {
+          "label": "Head Pompa",
+          "value": "20 meter s/d 250 meter"
+        },
+        {
+          "label": "Debit Air (Flow)",
+          "value": "5 m³/hari s/d 400 m³/hari"
+        },
+        {
+          "label": "Tipe Motor",
+          "value": "Brushless DC (BLDC) / 3-Phase AC Asynchronous"
+        },
+        {
+          "label": "Material Pompa",
+          "value": "Stainless Steel 304 / 316"
+        }
+      ],
+      "imageUrl": "/uploads/system_solar_pump_pju_1791532042932.jpg",
+      "datasheetAvailable": true
+    },
+    {
+      "id": "prod-pju-allinone",
+      "name": "MKA All-In-One Integrated Solar Street Light (PJU Surya)",
+      "category": "pju",
+      "capacity": "60W - 120W LED (6,000 - 14,000 Lumens)",
+      "warranty": "Garansi 3 Tahun Full Unit",
+      "description": "Lampu Penerangan Jalan Umum Tenaga Surya (PJUTS) dengan modul surya, lampu LED Philips, sensor gerak microwave, dan baterai LiFePO4 dalam satu kesatuan kokoh.",
+      "features": [
+        "Lumileds Ultra-Bright LED Chip efisiensi 170 lm/W",
+        "Built-in LiFePO4 Battery dengan BMS cerdas",
+        "PIR / Microwave Motion Sensor untuk penghematan daya malam hari",
+        "Housing aluminium die-cast IP66 tahan cuaca ekstrem tropis",
+        "Pemasangan instan tanpa kabel ground atau jaringan listrik"
+      ],
+      "specs": [
+        {
+          "label": "Tinggi Rekomendasi Tiang",
+          "value": "6 - 9 Meter"
+        },
+        {
+          "label": "Kapasitas Baterai",
+          "value": "12.8V 36Ah - 60Ah LiFePO4"
+        },
+        {
+          "label": "Waktu Cadangan Otonom",
+          "value": "3 - 5 Hari Hujan Berturut-turut"
+        },
+        {
+          "label": "Sertifikasi Proteksi",
+          "value": "IP66 Waterproof & IK08 Vandal-Proof"
+        }
+      ],
+      "imageUrl": "/uploads/system_solar_pump_pju_1791532042932.jpg",
+      "datasheetAvailable": true
+    }
+  ],
+  "projects": [
+    {
+      "id": "proj-01",
+      "title": "PLTS Atap Kawasan Industri Cikarang Barat",
+      "client": "PT Mulia Keramik Manufaktur",
+      "category": "industrial",
+      "location": "Cikarang Barat, Jawa Barat",
+      "capacityKwp": 450,
+      "systemType": "Industrial Rooftop On-Grid 380V",
+      "completionYear": 2024,
+      "monthlySavingsKwh": 58500,
+      "annualCo2ReductionTon": 498,
+      "description": "Pemasangan PLTS Atap 450 kWp di fasilitas produksi manufaktur keramik, menghemat 32% tagihan listrik harian dan berkontribusi langsung pada target ESG korporat.",
+      "imageUrl": "/uploads/project_industrial_rooftop_1791532032600.jpg"
+    },
+    {
+      "id": "proj-02",
+      "title": "Sistem Pompa Air Surya (PATS) Irigasi Pertanian Subang",
+      "client": "Kelompok Tani Tirta Makmur",
+      "category": "agriculture",
+      "location": "Subang, Jawa Barat",
+      "capacityKwp": 15,
+      "systemType": "Solar Water Pump (PATS) Submersible",
+      "completionYear": 2024,
+      "monthlySavingsKwh": 1950,
+      "annualCo2ReductionTon": 18.2,
+      "description": "Pemberdayaan irigasi sawah tadah hujan seluas 45 hektar menggunakan pompa surya submersible, menggantikan genset berbahan bakar solar 100%.",
+      "imageUrl": "/uploads/system_solar_pump_pju_1791532042932.jpg"
+    },
+    {
+      "id": "proj-03",
+      "title": "Residential Hybrid Energy Storage Depok",
+      "client": "Bapak Ir. Bambang S.",
+      "category": "residential",
+      "location": "Grand Depok City, Depok",
+      "capacityKwp": 10,
+      "systemType": "Smart Hybrid with 15kWh LiFePO4 Battery",
+      "completionYear": 2025,
+      "monthlySavingsKwh": 1300,
+      "annualCo2ReductionTon": 11.5,
+      "description": "Instalasi PLTS Hybrid 10 kWp dengan penyimpanan baterai cerdas 15 kWh, memberikan zero-downtime saat pemadaman jaringan dan menghemat 85% biaya listrik bulanan.",
+      "imageUrl": "/uploads/hero_solar_rooftop_1791532004071.jpg"
+    }
+  ],
+  "surveys": [
+    {
+      "id": "srv-001",
+      "ticketCode": "MKA-SRV-2026-001",
+      "fullName": "Bambang Triatmodjo",
+      "phone": "+62 813-1122-3344",
+      "email": "bambang.t@perkebunanraya.co.id",
+      "city": "Cikarang Pusat, Bekasi",
+      "address": "Kawasan Industri Delta Silicon 3, Jl. Trembesi Blok F, Cikarang",
+      "propertyType": "Pabrik / Industri",
+      "estimatedInvestment": 280000000,
+      "targetSurveyDate": "2026-10-18",
+      "roofType": "Metal Spandek Zincalume",
+      "notes": "Area atap pabrik seluas 1.200 m². Ingin konsultasi sistem On-Grid dengan zero export controller.",
+      "status": "Jadwal Dikonfirmasi",
+      "createdAt": "2026-10-10 09:15:00"
+    },
+    {
+      "id": "srv-002",
+      "ticketCode": "MKA-SRV-2026-002",
+      "fullName": "Dra. Hj. Nuraini Handayani",
+      "phone": "+62 812-9988-7766",
+      "email": "nuraini.h@gmail.com",
+      "city": "Kota Depok",
+      "address": "Cluster Pesona Kahuripan No. 12, Jl. Margonda Raya, Beji, Depok",
+      "propertyType": "Residensial",
+      "estimatedInvestment": 85000000,
+      "targetSurveyDate": "2026-10-21",
+      "roofType": "Genteng Keramik Glazur",
+      "notes": "Daya PLN rumah 7.700 VA, sering terjadi drop tegangan. Membutuhkan sistem Smart Hybrid 8 kWp dengan baterai cadangan.",
+      "status": "Menunggu Review",
+      "createdAt": "2026-10-10 11:30:00"
+    }
+  ],
+  "tickets": [
+    {
+      "id": "tkt-01",
+      "ticketNumber": "MKA-SRV-TKT-1082",
+      "clientName": "PT Cikarang Precision Parts",
+      "systemLocation": "Cikarang Industrial Zone",
+      "systemType": "PLTS Rooftop 150 kWp",
+      "currentStage": 3,
+      "issueDescription": "String inverter #2 mengalami error grounding fault pasca hujan lebat disertai petir.",
+      "reportedDate": "2026-10-08",
+      "technicianAssigned": "Ahmad Fauzi, S.T. (Senior Engineer)",
+      "diagnosisNotes": "Hasil megger test menemukan isolasi konektor MC4 pada string 3 terpapar rembesan air.",
+      "repairActions": "Penggantian konektor MC4 waterproof IP68 baru dan pengujian isolasi ulang aman.",
+      "status": "In Progress"
+    },
+    {
+      "id": "tkt-02",
+      "ticketNumber": "MKA-SRV-TKT-1049",
+      "clientName": "Bapak Hendra (Rumah Tinggal Depok)",
+      "systemLocation": "Beji, Kota Depok",
+      "systemType": "PLTS Hybrid 10 kWp + 10kWh Battery",
+      "currentStage": 4,
+      "issueDescription": "Kalibrasi State of Charge (SOC) baterai LiFePO4 dan pembaruan firmware inverter.",
+      "reportedDate": "2026-10-02",
+      "technicianAssigned": "Rian Pratama (Field Tech)",
+      "diagnosisNotes": "BMS membaca sel baterai drift 0.05V, butuh equalizing cycle.",
+      "repairActions": "Pembaruan firmware via WiFi dongle selesai, kapasitas baterai kembali presisi 100%.",
+      "customerRating": 5,
+      "status": "Resolved"
+    }
+  ],
+  "retail_items": [
+    {
+      "id": "ret-01",
+      "name": "Modul Surya N-Type TOPCon 585W Tier-1 Bifacial",
+      "brand": "Tier-1 High-Efficiency Module",
+      "category": "Solar Panel",
+      "priceEstimate": "Rp 1.450.000 / Panel",
+      "partnerUrl": "https://energicklick.com/products/solar-panel-585w-tier1",
+      "partnerName": "EnergiClick Official Partner",
+      "description": "Efisiensi konversi modul hingga 22.8%, garansi degradasi linier 30 tahun, garansi produk 12 tahun resmi SNI."
+    },
+    {
+      "id": "ret-02",
+      "name": "Smart Hybrid Inverter 5kW 48V Pure Sine Wave",
+      "brand": "MKA Smart Inverter Series",
+      "category": "Inverter",
+      "priceEstimate": "Rp 12.800.000 / Unit",
+      "partnerUrl": "https://energicklick.com/products/hybrid-inverter-5kw",
+      "partnerName": "EnergiClick Official Partner",
+      "description": "Dual MPPT Tracker, support parallel hingga 6 unit, transfer switch < 10ms UPS-grade, sertifikasi SNI & IEC."
+    },
+    {
+      "id": "ret-03",
+      "name": "Lithium Battery LiFePO4 51.2V 100Ah (5.12 kWh Rackmount)",
+      "brand": "MKA Deep-Cycle Storage Pack",
+      "category": "Baterai LiFePO4",
+      "priceEstimate": "Rp 17.500.000 / Unit",
+      "partnerUrl": "https://energicklick.com/products/lifepo4-battery-5kwh",
+      "partnerName": "EnergiClick Official Partner",
+      "description": "Siklus hidup >6,000 siklus @80% DOD, Smart BMS built-in dengan proteksi overcharge & thermal runaway."
+    }
+  ],
+  "activity_logs": [
+    {
+      "id": "act-01",
+      "timestamp": "2026-10-11 12:00:00",
+      "user": "System Server",
+      "action": "Inisialisasi Database Server MKA Energy. Kredensial dan konten tersimpan di server/data/database.json."
+    }
+  ]
+}

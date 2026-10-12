@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="solarAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="ecoEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="sunRay" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#B45309" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sun Rays Fan Upper Semi-Circle -->
+  <g transform="translate(256, 230)">
+    <!-- Ray Center -->
+    <path d="M-18,-70 L0,-140 L18,-70 Z" fill="url(#sunRay)" />
+    <!-- Ray Left 1 -->
+    <path d="M-45,-60 L-65,-125 L-25,-75 Z" fill="url(#sunRay)" />
+    <!-- Ray Left 2 -->
+    <path d="M-70,-45 L-115,-95 L-60,-55 Z" fill="url(#sunRay)" />
+    <!-- Ray Left 3 -->
+    <path d="M-85,-20 L-140,-45 L-80,-30 Z" fill="url(#sunRay)" />
+    <!-- Ray Left 4 -->
+    <path d="M-90,0 L-150,0 L-85,-5 Z" fill="url(#sunRay)" />
+    <!-- Ray Right 1 -->
+    <path d="M45,-60 L65,-125 L25,-75 Z" fill="url(#sunRay)" />
+    <!-- Ray Right 2 -->
+    <path d="M70,-45 L115,-95 L60,-55 Z" fill="url(#sunRay)" />
+    <!-- Ray Right 3 -->
+    <path d="M85,-20 L140,-45 L80,-30 Z" fill="url(#sunRay)" />
+    <!-- Ray Right 4 -->
+    <path d="M90,0 L150,0 L85,-5 Z" fill="url(#sunRay)" />
+    
+    <!-- Central Sun Core -->
+    <circle cx="0" cy="0" r="50" fill="#FFFBEB" stroke="#F59E0B" stroke-width="8" />
+    <path d="M-45,0 A45,45 0 0,1 45,0 Z" fill="url(#solarAmber)" />
+  </g>
+
+  <!-- Lower Semi-Circle Solar Cells Grid -->
+  <g transform="translate(256, 230)">
+    <!-- Base Curved Half Dome -->
+    <path d="M-130,10 A130,130 0 0,0 130,10 Z" fill="url(#ecoEmerald)" />
+    
+    <!-- Solar Cells Facets Pattern -->
+    <polygon points="0,20 -38,55 0,90 38,55" fill="#059669" stroke="#E6FFFA" stroke-width="3" />
+    <polygon points="-45,55 -85,55 -65,100 -25,100" fill="#047857" stroke="#E6FFFA" stroke-width="3" />
+    <polygon points="45,55 85,55 65,100 25,100" fill="#047857" stroke="#E6FFFA" stroke-width="3" />
+    <polygon points="0,95 -30,120 0,130 30,120" fill="#065F46" stroke="#E6FFFA" stroke-width="3" />
+    <polygon points="-88,20 -40,20 -35,50 -80,50" fill="#047857" stroke="#E6FFFA" stroke-width="3" />
+    <polygon points="88,20 40,20 35,50 80,50" fill="#047857" stroke="#E6FFFA" stroke-width="3" />
+    <polygon points="-35,20 35,20 30,50 -30,50" fill="#10B981" stroke="#E6FFFA" stroke-width="3" />
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="256" y="420" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="62" fill="#064E3B" text-anchor="middle" letter-spacing="3">MKA</text>
+  <text x="256" y="460" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="22" fill="#047857" text-anchor="middle" letter-spacing="5">ENERGY SOLUTION</text>
+</svg>
